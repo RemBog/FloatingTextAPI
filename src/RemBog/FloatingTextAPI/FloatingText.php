@@ -5,7 +5,6 @@ declare(strict_types=1);
 namespace RemBog\FloatingTextAPI;
 
 use pocketmine\world\Position;
-use pocketmine\math\Vector3;
 use RemBog\FloatingTextAPI\exception\InvalidIdException;
 
 class FloatingText
@@ -14,7 +13,7 @@ class FloatingText
     
     protected string $text;
     
-    protected Vector3 $position;
+    protected Position $position;
     
     public function __construct(int $id, string $text, Position $position)
     {
