@@ -5,22 +5,20 @@ declare(strict_types=1);
 namespace RemBog\FloatingTextAPI;
 
 use pocketmine\world\Position;
+use pocketmine\math\Vector3;
 use RemBog\FloatingTextAPI\exception\InvalidIdException;
 
 class FloatingText
 {
-    /** @var int */
-    protected $id;
+    protected int $id;
     
-    /** @var string */
-    protected $text;
+    protected string $text;
     
-    /** @var Vector3 */
-    protected $position;
+    protected Vector3 $position;
     
     public function __construct(int $id, string $text, Position $position)
     {
-        if(in_array($id, FloatingTextMain::$list))
+        if(array_key_exists($id, FloatingTextMain::$list))
         {
             throw new InvalidIdException("Invalid floating text id, $id is already used");
         }
