@@ -44,8 +44,18 @@ class FloatingText
         return $this->position;
     }
     
+    public function setId(int $newId): void
+    {
+        $this->id = $newId;
+    }
+    
     public function setText(string $newText): void
     {
         $this->text = $newText;
+    }
+    
+    public function setPosition(Position $newPosition): void
+    {
+        $this->position = $newPosition;
     }
 }
