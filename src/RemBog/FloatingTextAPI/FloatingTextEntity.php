@@ -73,7 +73,9 @@ class FloatingTextEntity extends Entity
         
         if(!is_null($this->idFt))
         {
+            $this->idFt = FloatingTextMain::$list[$this->idFt]->getId();
             $this->setNameTag(FloatingTextMain::$list[$this->idFt]->getText());
+            $this->();
         }
         
         $this->setHealth(1000);
