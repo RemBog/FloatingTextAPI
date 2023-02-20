@@ -17,8 +17,6 @@ class FloatingTextEntity extends Entity
     {
         parent::__construct($location);
         
-        $this->setImmobile(true);
-        
         if(!is_null($id))
         {
             $this->setNameTag(FloatingTextMain::$list[$id]->getText());
@@ -26,7 +24,9 @@ class FloatingTextEntity extends Entity
         
         $this->idFt = $id;
         
-        $this->setNameTagAlwaysVisible(true);
+        $this->setNameTagAlwaysVisible();
+        $this->setInvisible();
+        $this->setImmobile();
     }
     
     public static function getNetworkTypeId(): string
@@ -47,11 +47,6 @@ class FloatingTextEntity extends Entity
     public function getMaxHealth(): int
     {
         return 1000;
-    }
-    
-    public function onDamage(EntityDamageEvent $event): void
-    {
-        $event->cancel();
     }
     
     public function getDrops(): array
@@ -75,10 +70,7 @@ class FloatingTextEntity extends Entity
         {
             $this->idFt = FloatingTextMain::$list[$this->idFt]->getId();
             $this->setNameTag(FloatingTextMain::$list[$this->idFt]->getText());
-            $this->();
         }
-        
-        $this->setHealth(1000);
         
         return parent::onUpdate($currentTick);
 

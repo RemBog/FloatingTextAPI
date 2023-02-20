@@ -2,9 +2,7 @@
 
 namespace RemBog\FloatingTextAPI;
 
-use pocketmine\entity\Skin;
 use pocketmine\entity\Location;
-use pocketmine\nbt\tag\CompoundTag;
 
 class FloatingTextAPI
 {
@@ -15,15 +13,14 @@ class FloatingTextAPI
         $pos = $ft->getPosition();
         $loc = new Location($pos->x, $pos->y, $pos->z, $pos->getWorld(), 0, 0);
         
-	$entity = new FloatingTextEntity($loc, $id);
-	    
+	    $entity = new FloatingTextEntity($loc, $id);
         $entity->spawnToAll();
     }
     
     public static function disappearFloatingText(int $id): void
     {
-        $ft = self::getFloatingText($id);
-        
-        $ft->();
+        $ft = FloatingTextMain::$list[$id];
+        unset(FloatingTextMain::$list[$id]);
+        $ft->kill();
     }
 }
