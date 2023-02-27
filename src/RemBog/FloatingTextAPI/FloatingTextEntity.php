@@ -11,7 +11,7 @@ use pocketmine\event\entity\EntityDamageEvent;
 
 class FloatingTextEntity extends Entity
 {
-    protected $idFt;
+    protected int $idFt;
     
     public function __construct(Location $location, ?int $id = null)
     {
